@@ -1,0 +1,1 @@
+<p>Your verification OTP: {{ $otp }}</p>

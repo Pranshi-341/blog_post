@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Validation\Rules;
-
+use App\Jobs\SendVerificationEmail;
+use Illuminate\Support\Facades\Queue;
+use Ramsey\Uuid\Uuid;
 
 class AuthController extends Controller
 {
@@ -40,7 +42,6 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-
 
         return response($user, Response::HTTP_CREATED);
     }
